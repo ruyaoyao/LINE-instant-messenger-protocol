@@ -90,7 +90,9 @@ It serves files over both HTTP and HTTPS with the same authentication protocol a
 Login procedure
 ---------------
 
-This Thrift method issues a new authToken for an e-mail address and password combination:
+This Thrift method issues a new authToken for an e-mail address and password combination. The
+request should be sent to the path /api/v4/TalkService.do to avoid having to specify an auth token
+when none exists yet (/S4 always requires an auth token).
 
     loginWithIdentityCredentialForCertificate(
         IdentityProvider.LINE, // identityProvider
@@ -99,21 +101,20 @@ This Thrift method issues a new authToken for an e-mail address and password com
         true, // keepLoggedIn
         "127.0.0.1", // accesslocation (presumably local IP?)
         "hostname", // systemName (will show up in "Devices")
-        "") // certificate
+        "") // certificate (empty on first login - see login verification procedure below)
 
-For the login request, the X-Line-Access header must be specified but the value can be anything. The
-result structure is as follows:
+The result structure is as follows:
 
     struct LoginResult {
         1: string authToken;
-        2: certificate;
-        3: verifier;
-        4: pinCode;
-        5: i32 type;
+        2: string certificate;
+        3: string verifier;
+        4: string pinCode;
+        5: LoginResultType type;
     }
 
-After a successful login, the type is equal to 1 and the authToken field contains the X-Line-Access
-value to use in subsequent requests.
+After a successful login, the type is equal to SUCCESS (1) and the authToken field contains the
+X-Line-Access value to use in subsequent requests.
 
 The official desktop client sends an encrypted e-mail/password involving RSA and no X-Line-Access
 header, but it works just as fine in plain text. (TODO: Include description of RSA login procedure)
@@ -122,12 +123,14 @@ Login verification procedure
 ----------------------------
 
 In current versions, LINE now requires you to verify your identity using a PIN code when logging in
-to a desktop client for the first time from a "new location" based on geo-IP. This is obviously also
-required when logging in with the desktop client for the very first time.
+to a desktop client for the first time. It seems this is partially based on geo-IP, as clients that
+had logged in before the verification procedure was added do not need to verify themselves. New
+logins will all likely need to be verified.
 
-When PIN verification is required, the login method returns a type of 3 instead of 1. The pinCode
-field contains a PIN code to display to the user and the verifier field is set to a random token
-that is used to identify this verification session. The token stays the same for the whole process.
+When PIN verification is required, the login method returns a type of REQUIRE_DEVICE_CONFIRM (3)
+instead of SUCCESS (1). The pinCode field contains a PIN code to display to the user and the
+verifier field is set to a random token that is used to identify this verification session. The
+token stays the same for the whole process.
 
 The client then issues an empty request to the HTTP path /Q with the X-Line-Access header set to the
 verifier token. This request blocks until the user enters the correct PIN code on their mobile
@@ -149,7 +152,9 @@ A success response from /Q is JSON containing the following:
 
 After this response is received the client issues a loginWithVerifierForCertificate() call with the
 verifier token as the parameter. The server then returns a normal LoginReply message with the usual
-authToken.
+authToken. The LoginReply message also contains a certificate value (random hex string) which should
+be stored and used in future calls to loginWithIdentityCredentialForCertificate() to skip the
+validation step. If the certificate is not used, every login will prompt for PIN verification.
 
 If the token has already expired the response from /Q looks like the following:
 
