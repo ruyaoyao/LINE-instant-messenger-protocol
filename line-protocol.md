@@ -55,9 +55,11 @@ type.
 Internally any user is referred to as a Contact. Contacts are identified by a "mid" and the prefix
 is "u" (presumably for "user")
 
-Chats are called Rooms and are identified by a "mid" which is prefixed by "r" (for "room"). Groups
-are called Groups internally as well and are identified by an "id" which is prefixed with a "c"
-(presumably for "chat").
+Chats are called Rooms and are identified by a "mid" which is prefixed by "r" (for "room"). Rooms
+are the lightweight multi-user chats that are created when you invite an extra user to a plain IM
+conversation with a contact. Groups are called Groups internally as well and are identified by an
+"id" which is prefixed with a "c" (presumably for "chat"). Groups are more permanent than chats and
+have extra data associated with them such as a name and an icon.
 
 Any message is represented by a Message object. Message IDs are numeric but they are stored as
 strings.
@@ -169,38 +171,48 @@ Initial sync
 
 After logging in the client sends out a sequence of requests to synchronize with the server. It
 seems some messages are not always sent - the client could be storing data locally somewhere and
-comparing with the revision ID from getLastOpRevision()
+comparing with the revision ID from getLastOpRevision(). The client runs multiple sync sequences in
+parallel in order to make it faster.
 
-(TODO: Update list for current client)
+There is no requirement to implement all or any of these sync operations in a third-party client.
+
+### Sequence 1
+
+This seems to be the main sync sequence.
 
     getLastOpRevision()
 
 Gets the revision ID to use for the long poll return channel later. It's fetched first to ensure
 nothing is missed even if something happens during the sync procedure.
 
+    getDownloads()
+
+Mystery. Probably not related to software updates as that is a separate call. Could be related to
+sticker downloads.
+
     getProfile()
 
 Gets the currently logged in user's profile, which includes their display name and status message
 and so forth.
 
-    getBlockedContactIds()
+    getSettingsAttributes(8458272)
 
-List of blocked user IDs.
-
-    getRecommendationIds()
-
-List of suggested friend IDs.
-
-    getBlockedRecommendationIds()
-
-List of suggested friend IDs that have been dismissed (why can't the previous method just not
-return these...?)
+Gets some of the stored settings (the bits are NOTIFICATION_INCOMING_CALL, IDENTITY_IDENTIFIER,
+NOTIFICATION_DISABLED_WITH_SUB and PRIVACY_PROFILE_IMAGE_POST_TO_MYHOME)
 
     getAllContactIds()
 
 Gets all contact IDs added as friends.
 
-    getContacts(contactIds) - with IDs from the previous methods
+    getBlockedContactIds()
+
+List of blocked user IDs.
+
+    fetchNotificationItems()
+
+Mystery.
+
+    getContacts(contactIds) - with IDs from the previous methods that fetched contact IDs
 
 Gets details for the users.
 
@@ -208,9 +220,58 @@ Gets details for the users.
 
 Gets all groups current user is a member of.
 
-    getGroups(groupIds) - with IDs from the previous method
+    getGroupIdsInvited()
+
+Gets all groups for which the user has a pending invitation.
+
+    getGroups(groupIds) - with IDs from the previous methods
 
 Gets details for the groups. This included member lists.
+
+    getMessageBoxCompactWrapUpList(1, 50)
+
+Returns a complicated structure with "current active chats". This returns a list of of rooms and
+groups with partial information as well as the latest message(s) for them. This call seems to be the
+only way to get a list of rooms the current user is a member of as there is no separate getRooms
+method.
+
+### Sequence 2
+
+    getActivePurchaseVersions(0, 1000, "en", "US")
+
+Mystery. Probably related to sticker versions.
+
+    getConfigurations(...) - parameters involve country codes
+
+Returns a map of configuration settings with string keys. I do not have exact metadata for this
+function. Example:
+
+    {
+      "function.linecall.mobile_network_expire_period": "604800",
+      "function.linecall.store": "N",
+      "contact_ui.show_addressbook": "N",
+      "function.music": "N",
+      "group.max_size": "200",
+      "function.linecall.validate_caller_id": "N",
+      "function.linecall.spot": "N",
+      "main_tab.show_timeline": "N",
+      "function.linecall": "N",
+      "room.max_size": "100"
+    }
+
+Many of the settings seem to be related to features being enabled or disabled and maximum limits for
+them.
+
+    getRecommendationIds()
+
+List of suggested friend IDs.
+
+    getBlockedRecommendationIds()
+
+List of suggested friend IDs that have been dismissed (why can't the previous method just not return
+these...?)
+
+    getContacts(contactIds) - with IDs from the previous methods
 
 Managing the contact list
 -------------------------
