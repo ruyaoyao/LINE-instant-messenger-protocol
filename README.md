@@ -13,7 +13,7 @@ Files
 * **line-protocol.md:** Explanation of the wire protocol, the usage of the different functions and
   other implementation details.
 * **line.thrift:** An Apache Thrift interface file produced by analyzing official LINE software.
-* **line-main.thrift:** A filtered version of line.thrift with only the core services required for
+* **line_main.thrift:** A filtered version of line.thrift with only the core services required for
   an instant messenger and some identifiers renamed for better compatibility with some programming
   languages.
 
