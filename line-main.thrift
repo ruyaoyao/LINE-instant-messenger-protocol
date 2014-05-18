@@ -1,3 +1,5 @@
+namespace cpp line
+
 enum ApplicationType {
     IOS = 16;
     IOS_RC = 17;
@@ -62,35 +64,6 @@ enum ApplicationType {
     VIRTUAL = 272;
 }
 
-enum BuddyBannerLinkType {
-    BUDDY_BANNER_LINK_HIDDEN = 0;
-    BUDDY_BANNER_LINK_MID = 1;
-    BUDDY_BANNER_LINK_URL = 2;
-}
-
-enum BuddyOnAirType {
-    NORMAL = 0;
-    LIVE = 1;
-    VOIP = 2;
-}
-
-enum BuddyResultState {
-    ACCEPTED = 1;
-    SUCCEEDED = 2;
-    FAILED = 3;
-    CANCELLED = 4;
-    NOTIFY_FAILED = 5;
-    STORING = 11;
-    UPLOADING = 21;
-    NOTIFYING = 31;
-}
-
-enum BuddySearchRequestSource {
-    NA = 0;
-    FRIEND_VIEW = 1;
-    OFFICIAL_ACCOUNT_VIEW = 2;
-}
-
 enum CarrierCode {
     NOT_SPECIFIED = 0;
     JP_DOCOMO = 1;
@@ -99,38 +72,6 @@ enum CarrierCode {
     KR_SKT = 17;
     KR_KT = 18;
     KR_LGT = 19;
-}
-
-enum ChannelConfiguration {
-    MESSAGE = 0;
-    MESSAGE_NOTIFICATION = 1;
-    NOTIFICATION_CENTER = 2;
-}
-
-enum ChannelErrorCode {
-    ILLEGAL_ARGUMENT = 0;
-    INTERNAL_ERROR = 1;
-    CONNECTION_ERROR = 2;
-    AUTHENTICATIONI_FAILED = 3;
-    NEED_PERMISSION_APPROVAL = 4;
-    COIN_NOT_USABLE = 5;
-}
-
-enum ChannelSyncType {
-    SYNC = 0;
-    REMOVE = 1;
-}
-
-enum ContactAttribute {
-    CONTACT_ATTRIBUTE_CAPABLE_VOICE_CALL = 1;
-    CONTACT_ATTRIBUTE_CAPABLE_VIDEO_CALL = 2;
-    CONTACT_ATTRIBUTE_CAPABLE_MY_HOME = 16;
-    CONTACT_ATTRIBUTE_CAPABLE_BUDDY = 32;
-}
-
-enum ContactCategory {
-    NORMAL = 0;
-    RECOMMEND = 1;
 }
 
 enum ContactRelation {
@@ -271,12 +212,6 @@ enum FeatureType {
     OBJECT_STORAGE = 1;
 }
 
-enum GroupAttribute {
-    NAME = 1;
-    PICTURE_STATUS = 2;
-    ALL = 255;
-}
-
 enum IdentityProvider {
     UNKNOWN = 0;
     LINE = 1;
@@ -289,19 +224,6 @@ enum LoginResultType {
     REQUIRE_DEVICE_CONFIRM = 3;
 }
 
-enum MessageOperationType {
-    SEND_MESSAGE = 1;
-    RECEIVE_MESSAGE = 2;
-    READ_MESSAGE = 3;
-    NOTIFIED_READ_MESSAGE = 4;
-    NOTIFIED_JOIN_CHAT = 5;
-    FAILED_SEND_MESSAGE = 6;
-    SEND_CONTENT = 7;
-    SEND_CONTENT_RECEIPT = 8;
-    SEND_CHAT_REMOVED = 9;
-    REMOVE_ALL_MESSAGES = 10;
-}
-
 enum MIDType {
     USER = 0;
     ROOM = 1;
@@ -312,17 +234,6 @@ enum ModificationType {
     ADD = 0;
     REMOVE = 1;
     MODIFY = 2;
-}
-
-enum NotificationItemFetchMode {
-    ALL = 0;
-    APPEND = 1;
-}
-
-enum NotificationQueueType {
-    GLOBAL = 1;
-    MESSAGE = 2;
-    PRIMARY = 3;
 }
 
 enum NotificationStatus {
@@ -416,41 +327,6 @@ enum OpType {
     NOTIFIED_PUSH_NOTICENTER_ITEM = 59;
 }
 
-enum PayloadType {
-    PAYLOAD_BUY = 101;
-    PAYLOAD_CS = 111;
-    PAYLOAD_BONUS = 121;
-    PAYLOAD_EVENT = 131;
-}
-
-enum PaymentPgType {
-    PAYMENT_PG_NONE = 0;
-    PAYMENT_PG_AU = 1;
-    PAYMENT_PG_AL = 2;
-}
-
-enum PaymentType {
-    PAYMENT_APPLE = 1;
-    PAYMENT_GOOGLE = 2;
-}
-
-enum ProductBannerLinkType {
-    BANNER_LINK_NONE = 0;
-    BANNER_LINK_ITEM = 1;
-    BANNER_LINK_URL = 2;
-    BANNER_LINK_CATEGORY = 3;
-}
-
-enum ProductEventType {
-    NO_EVENT = 0;
-    CARRIER_ANY = 65537;
-    BUDDY_ANY = 131073;
-    INSTALL_IOS = 196609;
-    INSTALL_ANDROID = 196610;
-    MISSION_ANY = 262145;
-    MUSTBUY_ANY = 327681;
-}
-
 enum ProfileAttribute {
     EMAIL = 1;
     DISPLAY_NAME = 2;
@@ -461,25 +337,6 @@ enum ProfileAttribute {
     ALLOW_SEARCH_BY_EMAIL = 64;
     BUDDY_STATUS = 128;
     ALL = 255;
-}
-
-enum PublicType {
-    HIDDEN = 0;
-    PUBLIC = 1000;
-}
-
-enum RedirectType {
-    NONE = 0;
-    EXPIRE_SECOND = 1;
-}
-
-enum RegistrationType {
-    PHONE = 0;
-    EMAIL_WAP = 1;
-    FACEBOOK = 2305;
-    SINA = 2306;
-    RENREN = 2307;
-    FEIXIN = 2308;
 }
 
 enum SettingsAttribute {
@@ -541,31 +398,6 @@ enum SyncCategory {
     NOTIFICATION = 8;
 }
 
-enum TMessageBoxStatus {
-    ACTIVATED = 1;
-    UNREAD = 2;
-}
-
-enum UniversalNotificationServiceErrorCode {
-    INTERNAL_ERROR = 0;
-    INVALID_KEY = 1;
-    ILLEGAL_ARGUMENT = 2;
-    TOO_MANY_REQUEST = 3;
-    AUTHENTICATION_FAILED = 4;
-    NO_WRITE_PERMISSION = 5;
-}
-
-enum UnregistrationReason {
-    UNREGISTRATION_REASON_UNREGISTER_USER = 1;
-    UNREGISTRATION_REASON_UNBIND_DEVICE = 2;
-}
-
-enum UserAgeType {
-    OVER = 1;
-    UNDER = 2;
-    UNDEFINED = 3;
-}
-
 enum VerificationMethod {
     NO_AVAILABLE = 0;
     PIN_VIA_SMS = 1;
@@ -586,16 +418,6 @@ enum WapInvitationType {
     CHAT = 2;
 }
 
-struct AgeCheckDocomoResult {
-    1: string authUrl;
-    2: UserAgeType userAgeType;
-}
-
-struct AgeCheckRequestResult {
-    1: string authUrl;
-    2: string sessionId;
-}
-
 struct Announcement {
     1: i32 index;
     10: bool forceUpdate;
@@ -606,52 +428,9 @@ struct Announcement {
     15: string thumbnailUrl;
 }
 
-struct ChannelProvider {
-    1: string name;
-}
-
-struct ChannelInfo {
-    1: string channelId;
-    3: string name;
-    4: string entryPageUrl;
-    5: string descriptionText;
-    6: ChannelProvider provider;
-    7: PublicType publicType;
-    8: string iconImage;
-    9: list<string> permissions;
-    11: string iconThumbnailImage;
-    12: list<ChannelConfiguration> channelConfigurations;
-}
-
-struct ApprovedChannelInfo {
-    1: ChannelInfo channelInfo;
-    2: i64 approvedAt;
-}
-
-struct ApprovedChannelInfos {
-    1: list<ApprovedChannelInfo> approvedChannelInfos;
-    2: i64 revision;
-}
-
 struct AuthQrcode {
     1: string qrcode;
     2: string verifier;
-}
-
-struct BuddyBanner {
-    1: BuddyBannerLinkType buddyBannerLinkType;
-    2: string buddyBannerLink;
-    3: string buddyBannerImageUrl;
-}
-
-struct BuddyDetail {
-    1: string mid;
-    2: i64 memberCount;
-    3: bool onAir;
-    4: bool businessAccount;
-    5: bool addable;
-    6: set<ContentType> acceptableContentTypes;
-    7: bool capableMyhome;
 }
 
 struct Contact {
@@ -676,195 +455,12 @@ struct Contact {
     37: string picturePath;
 }
 
-struct BuddyList {
-    1: string classification;
-    2: string displayName;
-    3: i32 totalBuddyCount;
-    4: list<Contact> popularContacts;
-}
-
 struct Location {
     1: string title;
     2: string address;
     3: double latitude;
     4: double longitude;
     5: string phone;
-}
-
-struct BuddyMessageRequest {
-    1: ContentType contentType;
-    2: string text;
-    3: Location location;
-    4: binary content;
-    5: map<string, string> contentMetadata;
-}
-
-struct BuddyOnAirUrls {
-    1: map<string, string> hls;
-    2: map<string, string> smoothStreaming;
-}
-
-struct BuddyOnAir {
-    1: string mid;
-    3: i64 freshnessLifetime;
-    4: string onAirId;
-    5: bool onAir;
-    11: string text;
-    12: i64 viewerCount;
-    13: i64 targetCount;
-    31: BuddyOnAirType onAirType;
-    32: BuddyOnAirUrls onAirUrls;
-}
-
-struct BuddyProfile {
-    1: string buddyId;
-    2: string mid;
-    3: string searchId;
-    4: string displayName;
-    5: string statusMessage;
-    11: i64 contactCount;
-}
-
-struct BuddySearchResult {
-    1: string mid;
-    2: string displayName;
-    3: string pictureStatus;
-    4: string picturePath;
-    5: string statusMessage;
-    6: bool businessAccount;
-}
-
-struct ChannelDomain {
-    1: string host;
-    2: bool removed;
-}
-
-struct ChannelDomains {
-    1: list<ChannelDomain> channelDomains;
-    2: i64 revision;
-}
-
-exception ChannelException {
-    1: ChannelErrorCode code;
-    2: string reason;
-    3: map<string, string> parameterMap;
-}
-
-struct ChannelInfos {
-    1: list<ChannelInfo> channelInfos;
-    2: i64 revision;
-}
-
-struct ChannelNotificationSetting {
-    1: string channelId;
-    2: string name;
-    3: bool notificationReceivable;
-    4: bool messageReceivable;
-    5: bool showDefault;
-}
-
-struct ChannelSyncDatas {
-    1: list<ChannelInfo> channelInfos;
-    2: list<ChannelDomain> channelDomains;
-    3: i64 revision;
-    4: i64 expires;
-}
-
-struct ChannelToken {
-    1: string token;
-    2: string obsToken;
-    3: i64 expiration;
-    4: string refreshToken;
-    5: string channelAccessToken;
-}
-
-struct Coin {
-    1: i32 freeCoinBalance;
-    2: i32 payedCoinBalance;
-    3: i32 totalCoinBalance;
-    4: i32 rewardCoinBalance;
-}
-
-struct CoinPayLoad {
-    1: i32 payCoin;
-    2: i32 freeCoin;
-    3: PayloadType type;
-    4: i32 rewardCoin;
-}
-
-struct CoinHistory {
-    1: i64 payDate;
-    2: i32 coinBalance;
-    3: i32 coin;
-    4: string price;
-    5: string title;
-    6: bool refund;
-    7: string paySeq;
-    8: string currency;
-    9: string currencySign;
-    10: string displayPrice;
-    11: CoinPayLoad payload;
-    12: string channelId;
-}
-
-struct CoinHistoryCondition {
-    1: i64 start;
-    2: i32 size;
-    3: string language;
-    4: string eddt;
-    5: PaymentType appStoreCode;
-}
-
-struct CoinHistoryResult {
-    1: list<CoinHistory> historys;
-    2: Coin balance;
-    3: bool hasNext;
-}
-
-struct CoinProductItem {
-    1: string itemId;
-    2: i32 coin;
-    3: i32 freeCoin;
-    5: string currency;
-    6: string price;
-    7: string displayPrice;
-    8: string name;
-    9: string desc;
-}
-
-struct CoinPurchaseConfirm {
-    1: string orderId;
-    2: PaymentType appStoreCode;
-    3: string receipt;
-    4: string signature;
-    5: string seller;
-    6: string requestType;
-    7: bool ignoreReceipt;
-}
-
-struct CoinPurchaseReservation {
-    1: string productId;
-    2: string country;
-    3: string currency;
-    4: string price;
-    5: PaymentType appStoreCode;
-    6: string language;
-    7: PaymentPgType pgCode;
-    8: string redirectUrl;
-}
-
-struct CoinUseReservationItem {
-    1: string itemId;
-    2: string itemName;
-    3: i32 amount;
-}
-
-struct CoinUseReservation {
-    1: string channelId;
-    2: string shopOrderId;
-    3: PaymentType appStoreCode;
-    4: list<CoinUseReservationItem> items;
-    5: string country;
 }
 
 struct CompactContact {
@@ -925,34 +521,9 @@ struct EmailConfirmationSession {
     3: string targetEmail;
 }
 
-struct FriendChannelMatrix {
-    1: string channelId;
-    2: string representMid;
-    3: i32 count;
-}
-
-struct FriendChannelMatricesResponse {
-    1: i64 expires;
-    2: list<FriendChannelMatrix> matrices;
-}
-
 struct Geolocation {
     1: double longitude;
     2: double latitude;
-}
-
-struct NotificationTarget {
-    1: string applicationType;
-    2: string applicationVersion;
-    3: string region;
-}
-
-struct GlobalEvent {
-    1: string key;
-    2: list<NotificationTarget> targets;
-    3: i64 createdTime;
-    4: i64 data;
-    5: i32 maxDelay;
 }
 
 struct Group {
@@ -970,16 +541,6 @@ struct IdentityCredential {
     1: IdentityProvider provider;
     2: string identifier;
     3: string password;
-}
-
-struct LastReadMessageId {
-    1: string mid;
-    2: string lastReadMessageId;
-}
-
-struct LastReadMessageIds {
-    1: string chatId;
-    2: list<LastReadMessageId> lastReadMessageIds;
 }
 
 struct LoginResult {
@@ -1006,50 +567,11 @@ struct Message {
     5: i64 createdTime;
     6: i64 deliveredTime;
     10: string text;
-    11: Location location;
+    11: optional Location location;
     14: bool hasContent;
     15: ContentType contentType;
     17: binary contentPreview;
     18: map<string, string> contentMetadata;
-}
-
-struct MessageOperation {
-    1: i64 revision;
-    2: i64 createdTime;
-    3: MessageOperationType type;
-    4: i32 reqSeq;
-    5: OpStatus status;
-    10: string param1;
-    11: string param2;
-    12: string param3;
-    20: Message message;
-}
-
-struct MessageOperations {
-    1: list<MessageOperation> operations;
-    2: bool endFlag;
-}
-
-struct MetaProfile {
-    1: i64 createTime;
-    2: string regionCode;
-    3: map<RegistrationType, string> identities;
-}
-
-struct NotificationItem {
-    1: string id;
-    2: string from;
-    3: string to;
-    4: string fromChannel;
-    5: string toChannel;
-    7: i64 revision;
-    8: i64 createdTime;
-    9: map<string, string> content;
-}
-
-struct NotificationFetchResult {
-    1: NotificationItemFetchMode fetchMode;
-    2: list<NotificationItem> itemList;
 }
 
 struct Operation {
@@ -1063,82 +585,6 @@ struct Operation {
     11: string param2;
     12: string param3;
     20: Message message;
-}
-
-struct PaymentReservation {
-    1: string receiverMid;
-    2: string productId;
-    3: string language;
-    4: string location;
-    5: string currency;
-    6: string price;
-    7: PaymentType appStoreCode;
-    8: string messageText;
-    9: i32 messageTemplate;
-    10: i64 packageId;
-}
-
-struct PaymentReservationResult {
-    1: string orderId;
-    2: string confirmUrl;
-    3: map<string, string> extras;
-}
-
-struct Product {
-    1: string productId;
-    2: i64 packageId;
-    3: i32 version;
-    4: string authorName;
-    5: bool onSale;
-    6: i32 validDays;
-    7: i32 saleType;
-    8: string copyright;
-    9: string title;
-    10: string descriptionText;
-    11: i64 shopOrderId;
-    12: string fromMid;
-    13: string toMid;
-    14: i64 validUntil;
-    15: i32 priceTier;
-    16: string price;
-    17: string currency;
-    18: string currencySymbol;
-    19: PaymentType paymentType;
-    20: i64 createDate;
-    21: bool ownFlag;
-    22: ProductEventType eventType;
-    23: string urlSchema;
-    24: string downloadUrl;
-    25: string buddyMid;
-    26: i64 publishSince;
-    27: bool newFlag;
-    28: bool missionFlag;
-}
-
-struct ProductList {
-    1: bool hasNext;
-    4: i64 bannerSequence;
-    5: ProductBannerLinkType bannerTargetType;
-    6: string bannerTargetPath;
-    7: list<Product> productList;
-    8: string bannerLang;
-}
-
-struct ProductSimple {
-    1: string productId;
-    2: i64 packageId;
-    3: i32 version;
-    4: bool onSale;
-    5: i64 validUntil;
-}
-
-struct ProductSimpleList {
-    1: bool hasNext;
-    2: i32 reinvokeHour;
-    3: i64 lastVersionSeq;
-    4: list<ProductSimple> productList;
-    5: i64 recentNewReleaseDate;
-    6: i64 recentEventReleaseDate;
 }
 
 struct Profile {
@@ -1167,11 +613,6 @@ struct RegisterWithSnsIdResult {
     2: bool userCreated;
 }
 
-struct RequestTokenResponse {
-    1: string requestToken;
-    2: string returnUrl;
-}
-
 struct Room {
     1: string mid;
     2: i64 createdTime;
@@ -1184,34 +625,6 @@ struct RSAKey {
     2: string nvalue;
     3: string evalue;
     4: string sessionKey;
-}
-
-struct SendBuddyMessageResult {
-    1: string requestId;
-    2: BuddyResultState state;
-    3: string messageId;
-    4: i32 eventNo;
-    11: i64 receiverCount;
-    12: i64 successCount;
-    13: i64 failCount;
-    14: i64 cancelCount;
-    15: i64 blockCount;
-    16: i64 unregisterCount;
-    21: i64 timestamp;
-    22: string message;
-}
-
-struct SetBuddyOnAirResult {
-    1: string requestId;
-    2: BuddyResultState state;
-    3: i32 eventNo;
-    11: i64 receiverCount;
-    12: i64 successCount;
-    13: i64 failCount;
-    14: i64 cancelCount;
-    15: i64 unregisterCount;
-    21: i64 timestamp;
-    22: string message;
 }
 
 struct Settings {
@@ -1241,20 +654,6 @@ struct Settings {
     60: map<CustomMode, string> customModes;
 }
 
-struct SimpleChannelClient {
-    1: string applicationType;
-    2: string applicationVersion;
-    3: string locale;
-}
-
-struct SimpleChannelContact {
-    1: string mid;
-    2: string displayName;
-    3: string pictureStatus;
-    4: string picturePath;
-    5: string statusMessage;
-}
-
 struct SnsFriend {
     1: string snsUserId;
     2: string snsUserName;
@@ -1272,22 +671,10 @@ struct SnsFriendModification {
     2: SnsFriend snsFriend;
 }
 
-struct SnsFriends {
-    1: list<SnsFriend> snsFriends;
-    2: bool hasMore;
-}
-
 struct SnsIdUserStatus {
     1: bool userExisting;
     2: bool phoneNumberRegistered;
     3: bool sameDevice;
-}
-
-struct SnsProfile {
-    1: string snsUserId;
-    2: string snsUserName;
-    3: string email;
-    4: string thumbnailUrl;
 }
 
 struct SystemConfiguration {
@@ -1333,25 +720,6 @@ struct TMessageBoxWrapUpResponse {
     2: i32 totalSize;
 }
 
-exception UniversalNotificationServiceException {
-    1: UniversalNotificationServiceErrorCode code;
-    2: string reason;
-    3: map<string, string> parameterMap;
-}
-
-struct UpdateBuddyProfileResult {
-    1: string requestId;
-    2: BuddyResultState state;
-    3: i32 eventNo;
-    11: i64 receiverCount;
-    12: i64 successCount;
-    13: i64 failCount;
-    14: i64 cancelCount;
-    15: i64 unregisterCount;
-    21: i64 timestamp;
-    22: string message;
-}
-
 struct UserAuthStatus {
     1: bool phoneNumberRegistered;
     2: list<SnsIdType> registeredSnsIdTypes;
@@ -1372,480 +740,6 @@ struct WapInvitation {
     10: string inviteeEmail;
     11: string inviterMid;
     12: string roomMid;
-}
-
-service AccountSupervisorService {
-    RSAKey getRSAKey() throws(1: TalkException e);
-
-    void notifyEmailConfirmationResult(
-        2: map<string, string> parameterMap) throws(1: TalkException e);
-
-    string registerVirtualAccount(
-        2: string locale,
-        3: string encryptedVirtualUserId,
-        4: string encryptedPassword) throws(1: TalkException e);
-
-    void requestVirtualAccountPasswordChange(
-        2: string virtualMid,
-        3: string encryptedVirtualUserId,
-        4: string encryptedOldPassword,
-        5: string encryptedNewPassword) throws(1: TalkException e);
-
-    void requestVirtualAccountPasswordSet(
-        2: string virtualMid,
-        3: string encryptedVirtualUserId,
-        4: string encryptedNewPassword) throws(1: TalkException e);
-
-    void unregisterVirtualAccount(
-        2: string virtualMid) throws(1: TalkException e);
-}
-
-service AgeCheckService {
-    UserAgeType checkUserAge(
-        2: CarrierCode carrier,
-        3: string sessionId,
-        4: string verifier,
-        5: i32 standardAge) throws(1: TalkException e);
-
-    AgeCheckDocomoResult checkUserAgeWithDocomo(
-        2: string openIdRedirectUrl,
-        3: i32 standardAge,
-        4: string verifier) throws(1: TalkException e);
-
-    string retrieveOpenIdAuthUrlWithDocomo() throws(1: TalkException e);
-
-    AgeCheckRequestResult retrieveRequestToken(
-        2: CarrierCode carrier) throws(1: TalkException e);
-}
-
-service BuddyManagementService {
-    void addBuddyMember(
-        1: string requestId,
-        2: string userMid) throws(1: TalkException e);
-
-    void addBuddyMembers(
-        1: string requestId,
-        2: list<string> userMids) throws(1: TalkException e);
-
-    void blockBuddyMember(
-        1: string requestId,
-        2: string mid) throws(1: TalkException e);
-
-    list<SendBuddyMessageResult> commitSendMessagesToAll(
-        1: list<string> requestIdList) throws(1: TalkException e);
-
-    list<SendBuddyMessageResult> commitSendMessagesToMids(
-        1: list<string> requestIdList,
-        2: list<string> mids) throws(1: TalkException e);
-
-    bool containsBuddyMember(
-        1: string requestId,
-        2: string userMid) throws(1: TalkException e);
-
-    binary downloadMessageContent(
-        1: string requestId,
-        2: string messageId) throws(1: TalkException e);
-
-    binary downloadMessageContentPreview(
-        1: string requestId,
-        2: string messageId) throws(1: TalkException e);
-
-    binary downloadProfileImage(
-        1: string requestId) throws(1: TalkException e);
-
-    binary downloadProfileImagePreview(
-        1: string requestId) throws(1: TalkException e);
-
-    i64 getActiveMemberCountByBuddyMid(
-        2: string buddyMid) throws(1: TalkException e);
-
-    list<string> getActiveMemberMidsByBuddyMid(
-        2: string buddyMid) throws(1: TalkException e);
-
-    list<string> getAllBuddyMembers() throws(1: TalkException e);
-
-    list<string> getBlockedBuddyMembers() throws(1: TalkException e);
-
-    i64 getBlockerCountByBuddyMid(
-        2: string buddyMid) throws(1: TalkException e);
-
-    BuddyDetail getBuddyDetailByMid(
-        2: string buddyMid) throws(1: TalkException e);
-
-    BuddyProfile getBuddyProfile() throws(1: TalkException e);
-
-    Ticket getContactTicket() throws(1: TalkException e);
-
-    i64 getMemberCountByBuddyMid(
-        2: string buddyMid) throws(1: TalkException e);
-
-    SendBuddyMessageResult getSendBuddyMessageResult(
-        1: string sendBuddyMessageRequestId) throws(1: TalkException e);
-
-    SetBuddyOnAirResult getSetBuddyOnAirResult(
-        1: string setBuddyOnAirRequestId) throws(1: TalkException e);
-
-    UpdateBuddyProfileResult getUpdateBuddyProfileResult(
-        1: string updateBuddyProfileRequestId) throws(1: TalkException e);
-
-    bool isBuddyOnAirByMid(
-        2: string buddyMid) throws(1: TalkException e);
-
-    string linkAndSendBuddyContentMessageToAllAsync(
-        1: string requestId,
-        2: Message msg,
-        3: string sourceContentId) throws(1: TalkException e);
-
-    SendBuddyMessageResult linkAndSendBuddyContentMessageToMids(
-        1: string requestId,
-        2: Message msg,
-        3: string sourceContentId,
-        4: list<string> mids) throws(1: TalkException e);
-
-    void notifyBuddyBlocked(
-        1: string buddyMid,
-        2: string blockerMid) throws(1: TalkException e);
-
-    void notifyBuddyUnblocked(
-        1: string buddyMid,
-        2: string blockerMid) throws(1: TalkException e);
-
-    string registerBuddy(
-        2: string buddyId,
-        3: string searchId,
-        4: string displayName,
-        5: string statusMeessage,
-        6: binary picture,
-        7: map<string, string> settings) throws(1: TalkException e);
-
-    string registerBuddyAdmin(
-        2: string buddyId,
-        3: string searchId,
-        4: string displayName,
-        5: string statusMessage,
-        6: binary picture) throws(1: TalkException e);
-
-    string reissueContactTicket(
-        3: i64 expirationTime,
-        4: i32 maxUseCount) throws(1: TalkException e);
-
-    void removeBuddyMember(
-        1: string requestId,
-        2: string userMid) throws(1: TalkException e);
-
-    void removeBuddyMembers(
-        1: string requestId,
-        2: list<string> userMids) throws(1: TalkException e);
-
-    SendBuddyMessageResult sendBuddyContentMessageToAll(
-        1: string requestId,
-        2: Message msg,
-        3: binary content) throws(1: TalkException e);
-
-    string sendBuddyContentMessageToAllAsync(
-        1: string requestId,
-        2: Message msg,
-        3: binary content) throws(1: TalkException e);
-
-    SendBuddyMessageResult sendBuddyContentMessageToMids(
-        1: string requestId,
-        2: Message msg,
-        3: binary content,
-        4: list<string> mids) throws(1: TalkException e);
-
-    string sendBuddyContentMessageToMidsAsync(
-        1: string requestId,
-        2: Message msg,
-        3: binary content,
-        4: list<string> mids) throws(1: TalkException e);
-
-    SendBuddyMessageResult sendBuddyMessageToAll(
-        1: string requestId,
-        2: Message msg) throws(1: TalkException e);
-
-    string sendBuddyMessageToAllAsync(
-        1: string requestId,
-        2: Message msg) throws(1: TalkException e);
-
-    SendBuddyMessageResult sendBuddyMessageToMids(
-        1: string requestId,
-        2: Message msg,
-        3: list<string> mids) throws(1: TalkException e);
-
-    string sendBuddyMessageToMidsAsync(
-        1: string requestId,
-        2: Message msg,
-        3: list<string> mids) throws(1: TalkException e);
-
-    void sendIndividualEventToAllAsync(
-        1: string requestId,
-        2: string buddyMid,
-        3: NotificationStatus notificationStatus) throws(1: TalkException e);
-
-    SetBuddyOnAirResult setBuddyOnAir(
-        1: string requestId,
-        2: bool onAir) throws(1: TalkException e);
-
-    string setBuddyOnAirAsync(
-        1: string requestId,
-        2: bool onAir) throws(1: TalkException e);
-
-    SendBuddyMessageResult storeMessage(
-        1: string requestId,
-        2: BuddyMessageRequest messageRequest) throws(1: TalkException e);
-
-    void unblockBuddyMember(
-        1: string requestId,
-        2: string mid) throws(1: TalkException e);
-
-    void unregisterBuddy(
-        1: string requestId) throws(1: TalkException e);
-
-    void unregisterBuddyAdmin(
-        1: string requestId) throws(1: TalkException e);
-
-    void updateBuddyAdminProfileAttribute(
-        1: string requestId,
-        2: map<string, string> attributes) throws(1: TalkException e);
-
-    void updateBuddyAdminProfileImage(
-        1: string requestId,
-        2: binary picture) throws(1: TalkException e);
-
-    UpdateBuddyProfileResult updateBuddyProfileAttributes(
-        1: string requestId,
-        2: map<string, string> attributes) throws(1: TalkException e);
-
-    string updateBuddyProfileAttributesAsync(
-        1: string requestId,
-        2: map<string, string> attributes) throws(1: TalkException e);
-
-    UpdateBuddyProfileResult updateBuddyProfileImage(
-        1: string requestId,
-        2: binary image) throws(1: TalkException e);
-
-    string updateBuddyProfileImageAsync(
-        1: string requestId,
-        2: binary image) throws(1: TalkException e);
-
-    void updateBuddySearchId(
-        1: string requestId,
-        2: string searchId) throws(1: TalkException e);
-
-    void updateBuddySettings(
-        2: map<string, string> settings) throws(1: TalkException e);
-
-    string uploadBuddyContent(
-        2: ContentType contentType,
-        3: binary content) throws(1: TalkException e);
-}
-
-service BuddyService {
-    list<BuddySearchResult> findBuddyContactsByQuery(
-        2: string language,
-        3: string country,
-        4: string query,
-        5: i32 fromIndex,
-        6: i32 count,
-        7: BuddySearchRequestSource requestSource) throws(1: TalkException e);
-
-    list<Contact> getBuddyContacts(
-        2: string language,
-        3: string country,
-        4: string classification,
-        5: i32 fromIndex,
-        6: i32 count) throws(1: TalkException e);
-
-    BuddyDetail getBuddyDetail(
-        4: string buddyMid) throws(1: TalkException e);
-
-    BuddyOnAir getBuddyOnAir(
-        4: string buddyMid) throws(1: TalkException e);
-
-    list<string> getCountriesHavingBuddy() throws(1: TalkException e);
-
-    map<string, i64> getNewlyReleasedBuddyIds(
-        3: string country) throws(1: TalkException e);
-
-    BuddyBanner getPopularBuddyBanner(
-        2: string language,
-        3: string country,
-        4: ApplicationType applicationType,
-        5: string resourceSpecification) throws(1: TalkException e);
-
-    list<BuddyList> getPopularBuddyLists(
-        2: string language,
-        3: string country) throws(1: TalkException e);
-
-    list<Contact> getPromotedBuddyContacts(
-        2: string language,
-        3: string country) throws(1: TalkException e);
-}
-
-service ChannelApplicationProvidedService {
-    i64 activeBuddySubscriberCount() throws(1: TalkException e);
-
-    void addOperationForChannel(
-        1: OpType opType,
-        2: string param1,
-        3: string param2,
-        4: string param3) throws(1: TalkException e);
-
-    i64 displayBuddySubscriberCount() throws(1: TalkException e);
-
-    Contact findContactByUseridWithoutAbuseBlockForChannel(
-        2: string userid) throws(1: TalkException e);
-
-    list<string> getAllContactIdsForChannel() throws(1: TalkException e);
-
-    list<CompactContact> getCompactContacts(
-        2: i64 lastModifiedTimestamp) throws(1: TalkException e);
-
-    list<Contact> getContactsForChannel(
-        2: list<string> ids) throws(1: TalkException e);
-
-    string getDisplayName(
-        2: string mid) throws(1: TalkException e);
-
-    list<string> getFavoriteMidsForChannel() throws(1: TalkException e);
-
-    list<string> getFriendMids() throws(1: TalkException e);
-
-    list<string> getGroupMemberMids(
-        1: string groupId) throws(1: TalkException e);
-
-    list<Group> getGroupsForChannel(
-        1: list<string> groupIds) throws(1: TalkException e);
-
-    IdentityCredential getIdentityCredential() throws(1: TalkException e);
-
-    list<string> getJoinedGroupIdsForChannel() throws(1: TalkException e);
-
-    MetaProfile getMetaProfile() throws(1: TalkException e);
-
-    string getMid() throws(1: TalkException e);
-
-    SimpleChannelClient getPrimaryClientForChannel() throws(1: TalkException e);
-
-    Profile getProfileForChannel() throws(1: TalkException e);
-
-    list<SimpleChannelContact> getSimpleChannelContacts(
-        1: list<string> ids) throws(1: TalkException e);
-
-    string getUserCountryForBilling(
-        2: string country,
-        3: string remoteIp) throws(1: TalkException e);
-
-    i64 getUserCreateTime() throws(1: TalkException e);
-
-    map<RegistrationType, string> getUserIdentities() throws(1: TalkException e);
-
-    string getUserLanguage() throws(1: TalkException e);
-
-    list<string> getUserMidsWhoAddedMe() throws(1: TalkException e);
-
-    bool isGroupMember(
-        1: string groupId) throws(1: TalkException e);
-
-    bool isInContact(
-        2: string mid) throws(1: TalkException e);
-
-    string registerChannelCP(
-        2: string cpId,
-        3: string registerPassword) throws(1: TalkException e);
-
-    void removeNotificationStatus(
-        2: NotificationStatus notificationStatus) throws(1: TalkException e);
-
-    Message sendMessageForChannel(
-        2: Message message) throws(1: TalkException e);
-
-    void sendPinCodeOperation(
-        1: string verifier) throws(1: TalkException e);
-
-    void updateProfileAttributeForChannel(
-        2: ProfileAttribute profileAttribute,
-        3: string value) throws(1: TalkException e);
-}
-
-service ChannelService {
-    ChannelToken approveChannelAndIssueChannelToken(
-        1: string channelId) throws(1: ChannelException e);
-
-    string approveChannelAndIssueRequestToken(
-        1: string channelId,
-        2: string otpId) throws(1: ChannelException e);
-
-    NotificationFetchResult fetchNotificationItems(
-        2: i64 localRev) throws(1: ChannelException e);
-
-    ApprovedChannelInfos getApprovedChannels(
-        2: i64 lastSynced,
-        3: string locale) throws(1: ChannelException e);
-
-    ChannelInfo getChannelInfo(
-        2: string channelId,
-        3: string locale) throws(1: ChannelException e);
-
-    ChannelNotificationSetting getChannelNotificationSetting(
-        1: string channelId,
-        2: string locale) throws(1: ChannelException e);
-
-    list<ChannelNotificationSetting> getChannelNotificationSettings(
-        1: string locale) throws(1: ChannelException e);
-
-    ChannelInfos getChannels(
-        2: i64 lastSynced,
-        3: string locale) throws(1: ChannelException e);
-
-    ChannelDomains getDomains(
-        2: i64 lastSynced) throws(1: ChannelException e);
-
-    FriendChannelMatricesResponse getFriendChannelMatrices(
-        1: list<string> channelIds) throws(1: ChannelException e);
-
-    i32 getNotificationBadgeCount(
-        2: i64 localRev) throws(1: ChannelException e);
-
-    ChannelToken issueChannelToken(
-        1: string channelId) throws(1: ChannelException e);
-
-    string issueRequestToken(
-        1: string channelId,
-        2: string otpId) throws(1: ChannelException e);
-
-    RequestTokenResponse issueRequestTokenWithAuthScheme(
-        1: string channelId,
-        2: string otpId,
-        3: list<string> authScheme,
-        4: string returnUrl) throws(1: ChannelException e);
-
-    string reserveCoinUse(
-        2: CoinUseReservation request,
-        3: string locale) throws(1: ChannelException e);
-
-    void revokeChannel(
-        1: string channelId) throws(1: ChannelException e);
-
-    ChannelSyncDatas syncChannelData(
-        2: i64 lastSynced,
-        3: string locale) throws(1: ChannelException e);
-
-    void updateChannelNotificationSetting(
-        1: list<ChannelNotificationSetting> setting) throws(1: ChannelException e);
-}
-
-service MessageService {
-    MessageOperations fetchMessageOperations(
-        2: i64 localRevision,
-        3: i64 lastOpTimestamp,
-        4: i32 count) throws(1: TalkException e);
-
-    LastReadMessageIds getLastReadMessageIds(
-        2: string chatId) throws(1: TalkException e);
-
-    list<LastReadMessageIds> multiGetLastReadMessageIds(
-        2: list<string> chatIds) throws(1: TalkException e);
 }
 
 service ShopService {
@@ -1980,23 +874,6 @@ service ShopService {
 
     PaymentReservationResult reservePayment(
         2: PaymentReservation paymentReservation) throws(1: TalkException e);
-}
-
-service SnsAdaptorService {
-    SnsFriends getSnsFriends(
-        2: SnsIdType snsIdType,
-        3: string snsAccessToken,
-        4: i32 startIdx,
-        5: i32 limit) throws(1: TalkException e);
-
-    SnsProfile getSnsMyProfile(
-        2: SnsIdType snsIdType,
-        3: string snsAccessToken) throws(1: TalkException e);
-
-    void postSnsInvitationMessage(
-        2: SnsIdType snsIdType,
-        3: string snsAccessToken,
-        4: string toSnsUserId) throws(1: TalkException e);
 }
 
 service TalkService {
@@ -2725,9 +1602,4 @@ service TalkService {
     string verifyQrcode(
         2: string verifier,
         3: string pinCode) throws(1: TalkException e);
-}
-
-service UniversalNotificationService {
-    void notify(
-        2: GlobalEvent event) throws(1: UniversalNotificationServiceException e);
 }
