@@ -293,6 +293,77 @@ As an example of a publicly available image message, have a Pikachu:
 
 http://dl-obs.official.line.naver.jp/r/talk/o/u3ae3691f73c7a396fb6e5243a8718915-1379585871
 
+### STICKER (7)
+
+Sticker messages are simply a reference to a separately hosted image file. The information required
+to reference a sticker is contained in the contentMetadata map.
+
+A sticker reference consists of three numbers, the STKVER (sticker version), STKPKGID (sticker
+package ID) and STKID (sticker ID within package). To send a sticker, a message with contentType=7
+and these three values specified are enough. When receiving a sticker some stickers also return a
+meaningful textual name for the sticker in the STKTXT metadata field - this is added automatically
+and does not need to be specified when sending.
+
+Sticker image files are hosted on yet another CDN server at dl.stickershop.line.naver.jp. The CDN
+server does not require authentication and can be viewed with a plain browser for testing. The base
+URL for a sticker package is formed from the STKVER and STKPKGID values. First, the version is split
+into three numbers as follows:
+
+    VER = floor(STKVER / 1000000) + "/" + floor(STKVER / 1000) + "/" + (STKVER % 1000)
+
+Using this the package base URL can be determined:
+
+http://dl.stickershop.line.naver.jp/products/{VER}/{STKPKGID}/{PLATFORM}/
+
+PLATFORM is a platform identifier which is presumably used to deliver different image sizes etc to
+different platforms. The "WindowsPhone" platform seems to have most interesting files. Other known
+platforms are "PC". Not all platforms contain all file types.
+
+Sticker package version 100, package 1 ("Moon & James") is used as an example in the following URLs.
+Substitute another package base URL to see other packages.
+
+The sticker package contains a metadata file for a listing its contents:
+
+http://dl.stickershop.line.naver.jp/products/0/0/100/1/WindowsPhone/productInfo.meta
+
+This is a JSON file with metadata about the stickers in this package including names in multiple
+languages, the price in multiple currencies and a list of stickers.
+
+Each package also has an icon:
+
+http://dl.stickershop.line.naver.jp/products/0/0/100/1/WindowsPhone/tab_on.png - active
+
+http://dl.stickershop.line.naver.jp/products/0/0/100/1/WindowsPhone/tab_off.png - dimmed
+
+Each referenced sticker image is available in the subdirectory "stickers" as a PNG image. The
+filename is {STKID}.png for the full image and {STKID}_key.png for a thumbnail.
+
+http://dl.stickershop.line.naver.jp/products/0/0/100/1/WindowsPhone/stickers/13.png - full size
+
+http://dl.stickershop.line.naver.jp/products/0/0/100/1/WindowsPhone/stickers/13_key.png - thumbnail
+
+All sticker images as well as the icons can be downloaded as a single package from:
+
+http://dl.stickershop.line.naver.jp/products/0/0/100/1/WindowsPhone/stickers.zip
+
+The ShopService is used with the path /SHOP4 to get a list of sticker packages the current user has.
+TODO: specify more
+
+Interestingly the official client sends some emoji as a sticker message instead of a plain text
+message if the message content consists only of the single emoji. Emoji as stickers are in package
+number 5: (TODO: figure out how they're mapped)
+
+http://dl.stickershop.line.naver.jp/products/0/0/100/5/WindowsPhone/productInfo.meta
+
+The official clients also contain references to "old" stickers that have no STKVER or STKPKGID and
+use a URL of the format:
+
+http://line.naver.jp/stickers/android/{STKID}.png
+
+http://line.naver.jp/stickers/android/13.png
+
+These seem to just be redirects to new URLs now.
+
 Return channel
 --------------
 
