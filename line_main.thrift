@@ -327,6 +327,41 @@ enum OpType {
     NOTIFIED_PUSH_NOTICENTER_ITEM = 59;
 }
 
+enum PayloadType {
+    PAYLOAD_BUY = 101;
+    PAYLOAD_CS = 111;
+    PAYLOAD_BONUS = 121;
+    PAYLOAD_EVENT = 131;
+}
+
+enum PaymentPgType {
+    PAYMENT_PG_NONE = 0;
+    PAYMENT_PG_AU = 1;
+    PAYMENT_PG_AL = 2;
+}
+
+enum PaymentType {
+    PAYMENT_APPLE = 1;
+    PAYMENT_GOOGLE = 2;
+}
+
+enum ProductBannerLinkType {
+    BANNER_LINK_NONE = 0;
+    BANNER_LINK_ITEM = 1;
+    BANNER_LINK_URL = 2;
+    BANNER_LINK_CATEGORY = 3;
+}
+
+enum ProductEventType {
+    NO_EVENT = 0;
+    CARRIER_ANY = 65537;
+    BUDDY_ANY = 131073;
+    INSTALL_IOS = 196609;
+    INSTALL_ANDROID = 196610;
+    MISSION_ANY = 262145;
+    MUSTBUY_ANY = 327681;
+}
+
 enum ProfileAttribute {
     EMAIL = 1;
     DISPLAY_NAME = 2;
@@ -463,6 +498,71 @@ struct Location {
     5: string phone;
 }
 
+struct Coin {
+    1: i32 freeCoinBalance;
+    2: i32 payedCoinBalance;
+    3: i32 totalCoinBalance;
+    4: i32 rewardCoinBalance;
+}
+
+struct CoinPayLoad {
+    1: i32 payCoin;
+    2: i32 freeCoin;
+    3: PayloadType type;
+    4: i32 rewardCoin;
+}
+
+struct CoinHistory {
+    1: i64 payDate;
+    2: i32 coinBalance;
+    3: i32 coin;
+    4: string price;
+    5: string title;
+    6: bool refund;
+    7: string paySeq;
+    8: string currency;
+    9: string currencySign;
+    10: string displayPrice;
+    11: CoinPayLoad payload;
+    12: string channelId;
+}
+
+struct CoinHistoryCondition {
+    1: i64 start;
+    2: i32 size;
+    3: string language;
+    4: string eddt;
+    5: PaymentType appStoreCode;
+}
+
+struct CoinHistoryResult {
+    1: list<CoinHistory> historys;
+    2: Coin balance;
+    3: bool hasNext;
+}
+
+struct CoinProductItem {
+    1: string itemId;
+    2: i32 coin;
+    3: i32 freeCoin;
+    5: string currency;
+    6: string price;
+    7: string displayPrice;
+    8: string name;
+    9: string desc;
+}
+
+struct CoinPurchaseReservation {
+    1: string productId;
+    2: string country;
+    3: string currency;
+    4: string price;
+    5: PaymentType appStoreCode;
+    6: string language;
+    7: PaymentPgType pgCode;
+    8: string redirectUrl;
+}
+
 struct CompactContact {
     1: string mid;
     2: i64 createdTime;
@@ -585,6 +685,82 @@ struct Operation {
     11: string param2;
     12: string param3;
     20: Message message;
+}
+
+struct PaymentReservation {
+    1: string receiverMid;
+    2: string productId;
+    3: string language;
+    4: string location;
+    5: string currency;
+    6: string price;
+    7: PaymentType appStoreCode;
+    8: string messageText;
+    9: i32 messageTemplate;
+    10: i64 packageId;
+}
+
+struct PaymentReservationResult {
+    1: string orderId;
+    2: string confirmUrl;
+    3: map<string, string> extras;
+}
+
+struct Product {
+    1: string productId;
+    2: i64 packageId;
+    3: i32 version;
+    4: string authorName;
+    5: bool onSale;
+    6: i32 validDays;
+    7: i32 saleType;
+    8: string copyright;
+    9: string title;
+    10: string descriptionText;
+    11: i64 shopOrderId;
+    12: string fromMid;
+    13: string toMid;
+    14: i64 validUntil;
+    15: i32 priceTier;
+    16: string price;
+    17: string currency;
+    18: string currencySymbol;
+    19: PaymentType paymentType;
+    20: i64 createDate;
+    21: bool ownFlag;
+    22: ProductEventType eventType;
+    23: string urlSchema;
+    24: string downloadUrl;
+    25: string buddyMid;
+    26: i64 publishSince;
+    27: bool newFlag;
+    28: bool missionFlag;
+}
+
+struct ProductList {
+    1: bool hasNext;
+    4: i64 bannerSequence;
+    5: ProductBannerLinkType bannerTargetType;
+    6: string bannerTargetPath;
+    7: list<Product> productList_;
+    8: string bannerLang;
+}
+
+struct ProductSimple {
+    1: string productId;
+    2: i64 packageId;
+    3: i32 version;
+    4: bool onSale;
+    5: i64 validUntil;
+}
+
+struct ProductSimpleList {
+    1: bool hasNext;
+    2: i32 reinvokeHour;
+    3: i64 lastVersionSeq;
+    4: list<ProductSimple> productList;
+    5: i64 recentNewReleaseDate;
+    6: i64 recentEventReleaseDate;
 }
 
 struct Profile {
