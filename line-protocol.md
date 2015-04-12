@@ -411,21 +411,21 @@ Example HTTP upload:
 
     POST /talk/m/upload.nhn HTTP/1.1
     Content-Length: 29223
-    Content-Type: multipart/form-data; boundary=--boundary-CU3U3JIM7B17R0C4SIWX1NS7I1G0LV6BF76GPTNN
+    Content-Type: multipart/form-data; boundary=separator-CU3U3JIM7B17R0C4SIWX1NS7I1G0LV6BF76GPTNN
     Host: obs-de.line-apps.com:443
     X-Line-Access: D82j....=
     X-Line-Application: DESKTOPWIN\t3.6.0.32\tWINDOWS 5.0.2195-XP-x64
 
-    --boundary-CU3U3JIM7B17R0C4SIWX1NS7I1G0LV6BF76GPTNN
+    --separator-CU3U3JIM7B17R0C4SIWX1NS7I1G0LV6BF76GPTNN
     Content-Disposition: form-data; name="params"
 
     {"name":"1.jpg","oid":"1234567890123","size":28878,"type":"image","ver":"1.0"}
-    --boundary-CU3U3JIM7B17R0C4SIWX1NS7I1G0LV6BF76GPTNN
+    --separator-CU3U3JIM7B17R0C4SIWX1NS7I1G0LV6BF76GPTNN
     Content-Disposition: form-data; name="file"; filename="1.jpg"
     Content-Type: image/jpeg
 
     ...image data...
-    --boundary-CU3U3JIM7B17R0C4SIWX1NS7I1G0LV6BF76GPTNN--
+    --separator-CU3U3JIM7B17R0C4SIWX1NS7I1G0LV6BF76GPTNN--
 
 ### STICKER (7)
 
