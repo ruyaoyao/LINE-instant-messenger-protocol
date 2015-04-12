@@ -321,16 +321,25 @@ Messages can contain extra attributes in the contentMetadata map. One globally u
 "BOT_CHECK" which is included with a value of "1" for automatic messages I've received from
 "official accounts" - this could be an auto-reply indicator.
 
-### NONE (0) (actually text)
+### NONE (0)
 
 The first contentType is called NONE internally but is actually text. It's the simplest content
 type. The text field contains the message content encoded in UTF-8.
 
 The only thing to watch out for is emoji which are sent as Unicode private use area codepoints.
 
+Example:
+
+    client.sendMessage(0, line.Message(
+        to="u0123456789abcdef0123456789abcdef",
+        contentType=line.ContentType.NONE,
+        text="Hello, world!"))
+
 TODO: make a list of emoji
 
 ### IMAGE (1)
+
+#### Receiving
 
 Image message content can be delivered in one of two ways.
 
@@ -353,6 +362,70 @@ following keys:
 As an example of a publicly available image message, have a Pikachu:
 
 http://dl-obs.official.line.naver.jp/r/talk/o/u3ae3691f73c7a396fb6e5243a8718915-1379585871
+
+#### Sending
+
+Sending an image message is done in two steps. First a Thrift sendMessage call is used to obtain a
+message ID, and then the image data is uploaded to the Object Storage Server with a separate HTTP
+upload request.
+
+The message will not be delivered to the recipient until the HTTP upload is complete. The official
+client displays messages in the order of the sendMessage calls, even if the image data is uploaded
+much later. It might be possible to have fun by "reserving" a spot for an image message in a
+conversation and then filling it in later. It's unknown if there's an internal timeout for uploading
+the image data.
+
+In order to send an image message, first send a message normally with contentType=1 (IMAGE) and make
+note of the returned message ID. The official client also puts "1000000000" in the text field. The
+meaning of this is unknown and it's not required.
+
+The upload HTTP request is a multipart/form-data ("file upload") POST request to the URL:
+
+https://os.line.naver.jp/talk/m/upload.nhn
+
+The request uses the usual X-Line-Application and the X-Line-Access headers for authentication.
+There are two fields in the multipart request. The first field is called "params" and the content is
+a JSON object containing among other things the message ID. There is on Content-Type header.
+
+{"name":"1.jpg","oid":"1234567890123","size":28878,"type":"image","ver":"1.0"}
+
+The name field does not seem to be used for anything. oid should be set to the message ID obtained
+earlier. size should be set to the size of the image file to upload.
+
+The second field is called "file" with a filename argument, has a Content-Type header, and contains
+the image data itself. The filename and Content-Type headers seem to be ignored and the image format
+is automatically detected. At least JPEG and PNG data is supported for uploading, but everything is
+converted to JPEG by the server.
+
+Example sendMessage call:
+
+    # First send the message by using sendMessage
+    result = client.sendMessage(0, line.Message(
+        to="u0123456789abcdef0123456789abcdef",
+        contentType=line.ContentType.IMAGE))
+
+    # Store the ID
+    oid = result.id
+
+Example HTTP upload:
+
+    POST /talk/m/upload.nhn HTTP/1.1
+    Content-Length: 29223
+    Content-Type: multipart/form-data; boundary=--boundary-CU3U3JIM7B17R0C4SIWX1NS7I1G0LV6BF76GPTNN
+    Host: obs-de.line-apps.com:443
+    X-Line-Access: D82j....=
+    X-Line-Application: DESKTOPWIN\t3.6.0.32\tWINDOWS 5.0.2195-XP-x64
+
+    --boundary-CU3U3JIM7B17R0C4SIWX1NS7I1G0LV6BF76GPTNN
+    Content-Disposition: form-data; name="params"
+
+    {"name":"1.jpg","oid":"1234567890123","size":28878,"type":"image","ver":"1.0"}
+    --boundary-CU3U3JIM7B17R0C4SIWX1NS7I1G0LV6BF76GPTNN
+    Content-Disposition: form-data; name="file"; filename="1.jpg"
+    Content-Type: image/jpeg
+
+    ...image data...
+    --boundary-CU3U3JIM7B17R0C4SIWX1NS7I1G0LV6BF76GPTNN--
 
 ### STICKER (7)
 
