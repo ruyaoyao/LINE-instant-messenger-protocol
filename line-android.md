@@ -59,18 +59,24 @@ The mobile version of LINE does not require the user to manually register an acc
 automatically generated when the app is first installed. Therefore the user authentication method is
 also different.
 
-The mobile client stores a 15 byte unique key which is used to authenticate it to the LINE servers.
+The Android client stores a 15 byte auth key which is used to authenticate it to the LINE servers.
 The key is stored in an encrypted settings database, but obviously since the app needs to be able to
 read it, this is easy to circumvent (it turns out they essentially use an 8-bit encryption key,
-which is generated from the phone's ANDROID_ID value).
+which is generated from the phone's ANDROID_ID value). The auth key is likely generated when the app
+is first installed and it does not seem to ever change.
 
-The unique key along with the user ID is used to generate a hash that is used for authentication.
+You can use the tools/view-android-settings.py script to view the auth key for your account. It
+needs the LINE settings SQLite database and optionally the ANDROID_ID (it can also bruteforce it
+which takes about a millisecond on a modern computer). The database on my phone is located at:
+
+/data/data/jp.naver.line.android/databases/naver_line
+
+The displayed user MID and auth key are used to generate an authentication token whenever the client
+connects to the server.
 
 (TODO)
 
 (TODO add example code: mobile authentication token generation)
-
-(TODO add example code: obtaining the mobile auth key from the LINE settings SQLite database)
 
 Custom Thrift protocol
 ----------------------
