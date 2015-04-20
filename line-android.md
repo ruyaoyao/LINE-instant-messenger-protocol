@@ -39,10 +39,14 @@ the client and the server to encrypt the body with AES in CBC mode with a fixed 
 is reset for each message. Cryptanalysts may have something to say about the fixed IV and new
 context for each message.
 
-The AES encrypted messages are signed with a custom 64-bit MAC called legy_hmac, which is curiously
+The AES encrypted messages are signed with a custom 32-bit HMAC called legy_hmac, which is curiously
 only available in native code. I haven't yet analyzed how it works. I am not sure if the native
 library approach is taken to enable code re-use between platforms, or as some futile attempt to add
-security by obscurity.
+security by obscurity. It seems to be built on this hash algorithm:
+
+https://github.com/Cyan4973/xxHash
+
+Interestingly they seem to have forgotten to include the copyright notice for xxHash in their app.
 
 (TODO)
 
