@@ -3,7 +3,7 @@ LINE instant messenger protocol
 
 Matti Virkkunen <mvirkkunen@gmail.com>
 
-Document is accurate as of 2014-05-04.
+Document is accurate as of 2015-04-20.
 
 This unofficial document describes the LINE (by LINE Corporation/Naver) instant messenger protocol.
 The information is based mostly on reverse engineering and therefore accuracy is not guaranteed.
